@@ -1,0 +1,113 @@
+Title of the Project
+# Women Cloth Reviews Prediction with Multinomial Naive Bayes
+
+## Objective
+The multinomial Naive Bayes classifier is suitable for classification with discrete features(e.g.,word counts for text classification).
+The multinomial distribution normally requires integer features counts.However,in practice,fractional counts such as if-idf may also work.
+
+# Import libraries
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
+
+## Import Data
+# Load the data
+data = pd.read_csv('your_data.csv')  # replace 'your_data.csv' with actual file name
+data.head()
+
+## Describe Data
+# Data description
+data.describe()
+data.info()
+
+## Data Visualization
+sns.histplot(data['column_name'])  # replace 'column_name' with an actual column name
+plt.show()
+
+## Data Preprocessing
+# Handling missing values, encoding categorical variables, etc.
+
+## Define Target Variable (y) and Feature Variables (X)
+X = data.drop(columns=['target_column'])  # replace 'target_column' with actual target column
+y = data['target_column']
+
+## Train Test Split
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+## Modeling
+# Example model training
+from sklearn.linear_model import LogisticRegression
+model = LogisticRegression()
+model.fit(X_train, y_train).
+
+## Model Evaluation
+predictions = model.predict(X_test)
+accuracy = accuracy_score(y_test, predictions)
+print(f'Accuracy: {accuracy}')
+
+## Prediction
+predictions = model.predict(X_test)
+
+## Explanation
+import pandas as pd
+import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv('https://raw.githubusercontent.com/YBIFoundation/ProjectHub-MachineLearning/refs/heads/main/Women%20Clothing%20E-Commerce%20Review.csv')
+df.head()
+df.info()
+df.shape
+#Missing values
+df.isna().sum()
+df[df['Review']==""]=np.NaN
+df['Review'].fillna("No Review",inplace=True)
+df.isna().sum()
+df['Review']
+df.columns
+x=df['Review']
+y=df['Rating']
+df['Rating'].value_counts()
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.7,stratify=y,random_state=2529)
+x_train.shape,x_test.shape,y_train.shape,y_test.shape
+from sklearn.feature_extraction.text import CountVectorizer
+cv=CountVectorizer(lowercase=True,analyzer='word',ngram_range=(2,3),stop_words='english',max_features=5000)
+x_train=cv.fit_transform(x_train)
+cv.get_feature_names_out()
+x_train.toarray()
+x_test=cv.fit_transform(x_test)
+cv.get_feature_names_out()
+x_test.toarray()
+from sklearn.naive_bayes import MultinomialNB
+model=MultinomialNB()
+model.fit(x_train,y_train)
+y_pred=model.predict(x_test)
+y_pred.shape
+y_pred
+model.predict_proba(x_test)
+from sklearn.metrics import confusion_matrix,classification_report
+print(confusion_matrix(y_test,y_pred))
+print(classification_report(y_test,y_pred))
+df['Rating'].value_counts()
+df.replace({'Rating':{1:0,2:0,3:0,4:1,5:1}},inplace=True)
+y=df['Rating']
+x=df['Review']
+from sklearn.model_selection import train_test_split
+x_train,x_test,y_train,y_test=train_test_split(x,y,train_size=0.7,stratify=y,random_state=2529)
+x_train.shape,x_test.shape,y_train.shape,y_test.shape
+from sklearn.feature_extraction.text import CountVectorizer
+cv=CountVectorizer(lowercase=True,analyzer='word',ngram_range=(2,3),stop_words='english',max_features=5000)
+x_train=cv.fit_transform(x_train)
+x_test=cv.fit_transform(x_test)
+from sklearn.naive_bayes import MultinomialNB
+model=MultinomialNB()
+model.fit(x_train,y_train)
+y_pred=model.predict(x_test)
+y_pred.shape
+y_pred
+from sklearn.metrics import confusion_matrix,classification_report
+print(confusion_matrix(y_test,y_pred))
+print(classification_report(y_test,y_pred))
